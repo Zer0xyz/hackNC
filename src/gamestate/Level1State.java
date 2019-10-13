@@ -1,5 +1,6 @@
 package gamestate;
 
+import entities.EnemyHorizontal;
 import entities.Player;
 import hackNC.GamePanel;
 import objects.Block;
@@ -11,6 +12,7 @@ public class Level1State extends GameState {
 	private Player player;
 	
 	private Block[] b;
+	private EnemyHorizontal e;
 
 	public Level1State(GameStateManager gsm) {
 		super(gsm);
@@ -26,6 +28,8 @@ public class Level1State extends GameState {
 		b[0] = new Block(500, 400);
 		b[1] = new Block(450, 450);
 		b[2] = new Block(400, 500);
+		
+		e = new EnemyHorizontal(200, 200);
 	}
 
 	public void tick() {
@@ -36,6 +40,7 @@ public class Level1State extends GameState {
 		}
 		
 		player.tick(b);
+		e.tick();
 		
 	}
 
@@ -43,6 +48,7 @@ public class Level1State extends GameState {
 	public void draw(Graphics g) {
 
 		player.draw(g);
+		e.draw(g);
 		
 		for (int i = 0; i < b.length; i++)
 		{
