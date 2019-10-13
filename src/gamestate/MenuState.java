@@ -3,6 +3,7 @@ package gamestate;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
 import hackNC.GamePanel;
@@ -69,7 +70,7 @@ public class MenuState extends GameState{
 			if(currentSelection == 0)
 			{
 				// play
-				gsm.states.push(new Level1State(gsm));
+				gsm.setState(GameStateManager.LEVEL1STATE);
 			}
 			else if(currentSelection == 1)
 			{
@@ -87,5 +88,6 @@ public class MenuState extends GameState{
 	public void keyReleased(int k) {
 
 	}
+
 
 }

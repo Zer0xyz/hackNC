@@ -11,8 +11,8 @@ import gamestate.GameStateManager;
 public class GamePanel extends JPanel implements Runnable, KeyListener{
 	
 	//panel dimensions
-	public static final int WIDTH = 480;
-	public static final int HEIGHT = 240;
+	public static final int WIDTH = 900;
+	public static final int HEIGHT = 500;
 	public static final int SCALE = 2;
 	
 	//game thread

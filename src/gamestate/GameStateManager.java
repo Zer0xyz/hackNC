@@ -1,35 +1,46 @@
 package gamestate;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class GameStateManager {
 	
-	public Stack<GameState> states;
+	private ArrayList<GameState> gameStates;
+	private int currentState;
 	
-	public GameStateManager()
-	{
-		states = new Stack<GameState>();
-		states.push(new MenuState(this));
+	public static final int MENUSTATE = 0;
+	public static final int LEVEL1STATE = 1;
+	
+	public GameStateManager() {
+		
+		gameStates = new ArrayList<GameState>();
+		
+		currentState = MENUSTATE;
+		gameStates.add(new MenuState(this));
+		gameStates.add(new Level1State(this));
+		
 	}
 	
-	public void tick()
-	{
-		states.peek().tick();
+	public void setState(int state) {
+		currentState = state;
+		gameStates.get(currentState).init();
 	}
 	
-	public void draw(Graphics g)
-	{
-		states.peek().draw(g);
+	public void tick() {
+		gameStates.get(currentState).tick();
 	}
 	
-	public void keyPressed(int k)
-	{
-		states.peek().keyPressed(k);
+	public void draw(java.awt.Graphics g) {
+		gameStates.get(currentState).draw(g);
 	}
 	
-	public void keyReleased(int k)
-	{
-		states.peek().keyReleased(k);
+	public void keyPressed(int k) {
+		gameStates.get(currentState).keyPressed(k);
+	}
+	
+	public void keyReleased(int k) {
+		gameStates.get(currentState).keyReleased(k);
 	}
 }
